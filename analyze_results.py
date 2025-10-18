@@ -6,7 +6,7 @@ Calculates statistics and generates summary from CSV data.
 
 import csv
 import sys
-import numpy as np
+import math
 from pathlib import Path
 
 def load_data(csv_file):
@@ -51,7 +51,12 @@ def calculate_stats(values):
     """Calculate mean and std dev"""
     if not values:
         return None, None
-    return np.mean(values), np.std(values)
+    
+    mean = sum(values) / len(values)
+    variance = sum((x - mean) ** 2 for x in values) / len(values)
+    std_dev = math.sqrt(variance)
+    
+    return mean, std_dev
 
 def print_summary(data):
     """Print statistical summary"""

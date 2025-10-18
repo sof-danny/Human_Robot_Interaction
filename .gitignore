@@ -1,0 +1,19 @@
+# Zip files
+ece598hri-fa25-mps.zip
+*.zip
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Experimental data (comment out if you want to commit your data)
+mp1_experiment_data_*.csv
+
+# macOS
+.DS_Store
+
+# Editor files
+*.swp
+*.swo
+*~
