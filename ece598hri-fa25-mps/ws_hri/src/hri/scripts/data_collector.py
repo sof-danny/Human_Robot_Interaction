@@ -9,6 +9,7 @@ from cv_bridge import CvBridge, CvBridgeError
 from sensor_msgs.msg import Image
 from ur3_driver.msg import position
 from blob_search import blob_search
+from std_msgs.msg import String
 
 class ExperimentDataCollector:
     """
@@ -51,6 +52,8 @@ class ExperimentDataCollector:
         # Subscribe to topics
         rospy.Subscriber('ur3/position', position, self.position_callback)
         rospy.Subscriber("/cv_camera_node/image_raw", Image, self.image_callback)
+        # Optional: subscribe to keyboard input topic to avoid OpenCV focus issues
+        rospy.Subscriber('keyboard_input', String, self.keyboard_callback)
         
         rospy.loginfo("="*60)
         rospy.loginfo("MP1 Data Collector Initialized")
@@ -152,6 +155,22 @@ class ExperimentDataCollector:
         # Check for detection during trial
         if self.trial_active and self.entry_time:
             self.check_detection()
+
+    def keyboard_callback(self, msg):
+        """Handle keyboard commands published on 'keyboard_input' topic"""
+        try:
+            key_char = msg.data.strip().lower()
+        except Exception:
+            return
+        if key_char == 's':
+            self.start_trial()
+        elif key_char == 'r':
+            self.reset_trial()
+        elif key_char == 'q':
+            self.quit()
+        elif key_char == 'e':
+            if self.trial_active and not self.entry_time:
+                self.mark_entry()
     
     def start_trial(self):
         """Start a new trial"""
