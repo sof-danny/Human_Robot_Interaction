@@ -180,6 +180,11 @@ def safety_function(self):
 
 ## 7. Experimental Results
 
+### Experimental Setup
+
+![Experimental Setup](../Figures/Experimental_setup.JPG)
+*Figure 1: Experimental setup showing UR3 robot with overhead camera monitoring the shared workspace.*
+
 ### Test Configuration
 - **Robot velocity**: v = 0.25 rad/s
 - **Robot acceleration**: a = 0.25 rad/s²
@@ -188,6 +193,9 @@ def safety_function(self):
 - **Lighting**: Standard laboratory conditions
 - **Number of trials**: 15
 - **Data collection**: Automated using custom ROS node with manual entry time marking
+
+![Data Collection Interface](../Figures/data_collection.png)
+*Figure 2: Data collection interface showing real-time detection visualization.*
 
 ### Collected Data
 
@@ -218,6 +226,17 @@ def safety_function(self):
 - **Mean Minimum Distance**: 23.5 cm (±10.8 cm)
 - **Median Total Response Time**: 524 ms (less affected by outliers)
 
+![Performance Summary](../Figures/performance_summary.png)
+*Figure 3: System performance summary dashboard showing key metrics across all trials.*
+
+### Visual Analysis
+
+![Success Rate](../Figures/success_rate.png)
+*Figure 4: Detection success rate visualization - 100% success across all 15 trials.*
+
+![Response Times Over Trials](../Figures/response_times_trials.png)
+*Figure 5: Response times (detection, stop, and total) plotted across all trials showing bimodal distribution.*
+
 ### Observations
 
 1. **Perfect detection rate**: System achieved 100% detection success rate, exceeding the 95% target
@@ -236,13 +255,25 @@ def safety_function(self):
    - Slow group (n=8): Mean response ~3177 ms
    - Suggests two different experimental protocols or entry marking strategies
 
+![Bimodal Analysis](../Figures/bimodal_analysis.png)
+*Figure 6: Bimodal distribution analysis clearly showing fast trials (green, <1s) versus slow trials (red, ≥1s).*
+
+![Response Time Distribution](../Figures/response_time_distribution.png)
+*Figure 7: Distribution histogram and box plot of total response times showing high variance and outliers.*
+
 4. **Stop latency more consistent**: Mean stop latency of 346 ms (±969 ms) 
    - Median stop latency likely more representative (~130 ms)
    - Once detection occurs, stopping is relatively fast and consistent
 
+![Latency Comparison](../Figures/latency_comparison.png)
+*Figure 8: Box plot comparing detection latency versus stop latency, showing the actual system response characteristics.*
+
 5. **Excellent safe distances**: Mean minimum distance of 23.5 cm far exceeds 5cm safety requirement
    - Even worst case (Trial 8: 0.2 cm) was after robot had already stopped
    - System maintains safe separation during operation
+
+![Distance Measurements](../Figures/distance_measurements.png)
+*Figure 9: Minimum safe distance measurements for each trial, all exceeding the 5 cm safety requirement.*
 
 ---
 

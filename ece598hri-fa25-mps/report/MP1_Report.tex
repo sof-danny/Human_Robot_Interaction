@@ -195,6 +195,15 @@ Min Safe Distance & Object-robot distance & > 10 cm & > 5 cm \\
 
 \section{Experimental Results}
 
+\subsection{Experimental Setup}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{../Figures/Experimental_setup.JPG}
+\caption{Experimental setup showing UR3 robot with overhead camera monitoring the shared workspace.}
+\label{fig:setup}
+\end{figure}
+
 \subsection{Test Configuration}
 
 \begin{itemize}[leftmargin=*]
@@ -206,6 +215,13 @@ Min Safe Distance & Object-robot distance & > 10 cm & > 5 cm \\
     \item \textbf{Number of trials}: 15
     \item \textbf{Data collection}: Automated using custom ROS node
 \end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{../Figures/data_collection.png}
+\caption{Data collection interface showing real-time detection visualization.}
+\label{fig:data_collection}
+\end{figure}
 
 \subsection{Collected Data}
 
@@ -249,6 +265,31 @@ Table~\ref{tab:results} presents the complete experimental data from all 15 tria
     \item \textbf{Median Total Response Time}: 524 ms
 \end{itemize}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{../Figures/performance_summary.png}
+\caption{System performance summary dashboard showing key metrics across all trials.}
+\label{fig:performance_summary}
+\end{figure}
+
+\subsection{Visual Analysis}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../Figures/success_rate.png}
+    \caption{Detection success rate - 100\% success across all 15 trials.}
+    \label{fig:success_rate}
+\end{minipage}\hfill
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../Figures/response_times_trials.png}
+    \caption{Response times plotted across all trials.}
+    \label{fig:response_times}
+\end{minipage}
+\end{figure}
+
 \subsection{Key Observations}
 
 \begin{enumerate}[leftmargin=*]
@@ -262,6 +303,36 @@ Table~\ref{tab:results} presents the complete experimental data from all 15 tria
 
     \item \textbf{Excellent safe distances}: Mean minimum distance of 23.5 cm far exceeds the 5 cm safety requirement, providing substantial safety margins even in worst-case scenarios.
 \end{enumerate}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{../Figures/bimodal_analysis.png}
+\caption{Bimodal distribution analysis showing fast trials (green, <1s) versus slow trials (red, ≥1s).}
+\label{fig:bimodal}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../Figures/response_time_distribution.png}
+    \caption{Distribution histogram and box plot of total response times.}
+    \label{fig:response_dist}
+\end{minipage}\hfill
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../Figures/latency_comparison.png}
+    \caption{Box plot comparing detection vs. stop latency.}
+    \label{fig:latency_comp}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{../Figures/distance_measurements.png}
+\caption{Minimum safe distance measurements for each trial, all exceeding the 5 cm safety requirement.}
+\label{fig:distances}
+\end{figure}
 
 \section{Analysis and Conclusion}
 
